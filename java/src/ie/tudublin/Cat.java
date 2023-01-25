@@ -22,7 +22,7 @@ public class Cat {
 		System.out.println("Meow");
 	}
 
-	int numLives = 9;
+	private int numLives = 9;
 
 	public void kill()
 	{
