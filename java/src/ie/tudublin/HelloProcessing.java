@@ -34,6 +34,7 @@ public class HelloProcessing extends PApplet
 		circle(250, 250, 50);
 
 		// background(0);
+								// mouseY
 		// circle(mouseX, mouseY, 10);
 		
 	}
