@@ -5,6 +5,8 @@ import processing.core.PApplet;
 public class BugZap extends PApplet
 {
 	float playerX, playerY, playerWidth;
+	
+	float bugX, bugY, bugWidth;
 
 	public void settings()
 	{
@@ -22,6 +24,23 @@ public class BugZap extends PApplet
 		playerY = height - 50;
 		playerWidth = 50;
 
+		resetBug();
+
+	}
+
+	private void resetBug()
+	{
+		bugX = random(bugWidth / 2, width - (bugWidth / 2));
+		bugY = 50;
+		bugWidth = 50;
+	}
+
+	void drawBug(float x, float y, float w)
+	{
+		float halfw = w / 2;
+		stroke(255);
+		noFill();
+		triangle(x - halfw, y + halfw, x, y - halfw, x + halfw, y + halfw);
 	}
 
 	void drawPlayer(float x, float y, float w)
@@ -34,10 +53,38 @@ public class BugZap extends PApplet
 		line(x, y - 10, x, y - 20);
 	}
 
+	float playerSpeed = 5;
+
+	public void keyPressed()
+	{
+		if (keyCode == LEFT)
+		{
+			playerX -= playerSpeed;
+		} // end if
+		if (keyCode == RIGHT)
+		{
+			playerX += playerSpeed;
+		} // end if
+
+		// stay in region of screen
+	}
+
+	void moveBug()
+	{
+		bugY++;
+		bugX += random(-20, 20);
+	}
+
 	public void draw()
 	{
 		background(0);
 		strokeWeight(2);
 		drawPlayer(playerX, playerY, playerWidth);
+		drawBug(bugX, bugY, bugWidth);
+		// if frame count is multiple of 20
+		if (frameCount % 20 == 0)
+		{
+			moveBug();
+		}
 	}
 }
