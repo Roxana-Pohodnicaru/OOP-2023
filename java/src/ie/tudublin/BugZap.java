@@ -66,8 +66,27 @@ public class BugZap extends PApplet
 			playerX += playerSpeed;
 		} // end if
 
-		// stay in region of screen
+		// shooting (hitting bug or top of screen)
+		if (key == ' ')
+		{
+			float halfW = bugWidth / 2;
+
+			// am i greater than left hand side of bug + right hand side
+			if (playerX > bugX - halfW && playerX < bugX + halfW)
+			{
+				score++;
+				resetBug();
+				line(playerX, playerY - 10, playerX, bugY);
+			}
+			else
+			{									// top of screen
+				line(playerX, playerY - 10, playerX, 0);
+			}
+		}
+
 	}
+
+	int score = 0;
 
 	void moveBug()
 	{
@@ -86,5 +105,8 @@ public class BugZap extends PApplet
 		{
 			moveBug();
 		}
+
+		// print text to screen (prinf)
+		text("Score: " + score, 50, 50);
 	}
 }
