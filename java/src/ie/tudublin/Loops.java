@@ -5,27 +5,146 @@ import processing.core.PApplet;
 public class Loops extends PApplet {
 
 	int mode = 0;
-	public void settings() {
-		size(1000, 1000);
+	float cx;
+	float cy;
+
+	public void settings()
+	{
+		size(500, 500);
+		cx = width / 2;
+		cy = height / 2;
 	}
 
-	public void setup() {
+	public void setup()
+	{
+		colorMode(HSB);
 	}
 
-
-
-	public void keyPressed() {
-		
+	public void keyPressed()
+	{
 		mode = key - '0';
 		println(mode);
 	}
 
-	public void draw() {
+	public void draw() 
+	{
 		background(0);
-		fill(255);
-		
-		
-		
+		noStroke();
 
+		switch (mode)
+		{
+			case 0:
+			{
+				// width and height of button
+				float w = 200;
+				float h = 50;
+
+				rectMode(CENTER);
+
+				if (mouseX > cx - (w / 2) && mouseX < cx + (w/2) && mouseY > cy - (h/2) && mouseY < cy + (h/2))
+				{
+					fill(50, 255, 255);
+				}
+				else
+				{
+					fill(200, 255, 255);
+				}
+				
+				rect(cx, cy, w, h);
+
+				break;
+			}
+			case 1:
+			{	//	moving mouse left to right
+				int bars = (int) (mouseX / 20.0f);
+				float w = width / (float)bars;
+
+				for (int i = 0; i < bars; i++)
+				{
+					noStroke();
+					fill(map(i, 0, bars, 0, 255), 255, 255);
+					rect(map(i, 0, bars, 0, 500), 0, w, height);
+				}
+
+				break;
+			}
+			case 2:
+			{						
+				int numRects = (int) mouseX / 10;
+				float w = width / (float) numRects;
+				float cgap = 255 / (float) numRects;
+				
+				for (int i = 0; i < numRects; i++)
+				{
+					fill(cgap * i, 255, 255);
+					rect(i * w, i * w, w, w);
+				}
+
+				break;
+ 			}
+			case 3:
+			{
+				int numRects = (int) mouseX / 10;
+				float w = width / (float) numRects;
+				float cgap = 255 / (float) numRects;
+					
+				for (int i = 0; i < numRects; i++)
+				{
+					fill(cgap * i, 255, 255);
+					rect(i * w, i * w, w, w);
+					rect(width - ((i + 1) * w), i * w, w, w);
+				}
+
+				break;
+			}
+			case 4:
+			{
+				int numCircles = (int) mouseX / 10;
+				float cgap = 255 / (float) numCircles;
+				float gap = width / (float) numCircles;
+				float w = width;
+
+				for (int i = numCircles; i >= 1; i--)
+				{
+					fill(i * cgap, 255, 255);
+					w = i * gap;
+					ellipse(cx, cy, w, w);
+				}
+
+				break;
+			}
+			case 5:
+			{
+				int numCircles = (int) mouseX / 10;
+				float w = width / (float) numCircles;
+				float cgap = 255 / numCircles;
+
+				for (int i = 0; i < numCircles; i++)
+				{
+					fill(cgap *  i, 255, 255);
+					ellipse((w / 2) + w * i, (w / 2) + w, w, w);
+				} // end outer for
+
+				break;
+			}
+			case 6:
+			{
+				int numCircles = (int) mouseX / 10;
+				float w = width / (float) numCircles;
+				//				       no. of cols + rows
+				float cgap = 255 / (numCircles + numCircles);
+
+				for (int i = 0; i < numCircles; i++)
+				{
+					for (int j = 0; j < numCircles; j++)
+					{
+						fill(cgap * (i + j), 255, 255);
+						ellipse((w / 2) + w * j, (w / 2) + w * i, w, w);
+					} // end inner for
+				} // end outer for
+
+				break;
+			}
+		}
 	}
 }
