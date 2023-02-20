@@ -142,9 +142,34 @@ public class Loops extends PApplet {
 						ellipse((w / 2) + w * j, (w / 2) + w * i, w, w);
 					} // end inner for
 				} // end outer for
-
-				break;
 			}
+			case 7:
+			{
+				background(0);
+				stroke(255, 255, 255);	
+				float cx = width / 2;
+				float cy = height / 2;	
+				float radius = 200;		
+				int points = (int)map(mouseX, 1, width, 5, 20);
+				int sides = points * 2;
+				float px = cx;
+				float py = cy - radius; 
+
+				for(int i = 0 ; i <= sides ; i ++)
+				{
+					float r = (i % 2 == 0) ? radius : radius / 2; 
+					// float r = radius;
+					float theta = map(i, 0, sides, 0, TWO_PI);
+					float x = cx + sin(theta) * r;
+					float y = cy - cos(theta) * r;
+					
+					//circle(x, y, 20);
+					line(px, py, x, y);
+					px = x;
+					py = y;
+				}
+			}
+			break;
 		}
 	}
 }
