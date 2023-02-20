@@ -36,8 +36,6 @@ public class Audio1 extends PApplet
 		
 	}
 
-	
-	
 	public void draw()
 	{	
 		background(0);
@@ -46,13 +44,29 @@ public class Audio1 extends PApplet
         float half = height / 2;
         float cgap = 255 / (float) ab.size();
         
-        
+        float total = 0;
         
         for(int i = 0; i < ab.size(); i++)
         {   
+            total += abs(ab.get(i));
             stroke(cgap * i, 255, 255);
                                     // ab[i]
             line(i, half, i, half + ab.get(i) * half);
         }
+
+        float average = total / (float) ab.size();
+        
+
+        // bringing lerpedR 10% closer to r
+        // slowly making it smaller and bigger (smoother))
+        float r = average * 200;
+        lerpedR = lerp(lerpedR, r, 0.1f);
+
+        circle(100, 200, r);
+
+
+
 	}
+
+    float lerpedR = 0;
 }
