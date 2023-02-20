@@ -42,10 +42,16 @@ public class Audio1 extends PApplet
 	{	
 		background(0);
         stroke(255);
+
         float half = height / 2;
+        float cgap = 255 / (float) ab.size();
+        
+        
         
         for(int i = 0; i < ab.size(); i++)
-        {                              // ab[i]
+        {   
+            stroke(cgap * i, 255, 255);
+                                    // ab[i]
             line(i, half, i, half + ab.get(i) * half);
         }
 	}
