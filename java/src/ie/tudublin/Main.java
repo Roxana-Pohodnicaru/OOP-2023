@@ -2,15 +2,15 @@ package ie.tudublin;
 
 public class Main
 {
-	public static void loops()
+	public static void starMap()
 	{
 		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Loops());
+        processing.core.PApplet.runSketch( a, new StarMap());
     }
 
 	public static void main(String[] args)
 	{
-		loops();
+		starMap();
 	}
 	
 }
