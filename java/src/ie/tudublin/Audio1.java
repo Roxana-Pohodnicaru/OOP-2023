@@ -65,10 +65,14 @@ public class Audio1 extends PApplet
         y = height / 2;
         smoothedY = y;
 
+
+        lerpedBuffer = new float[width];
+
     } // end void setup
 
 
     float off = 0;
+    float[] lerpedBuffer;
 
 
     public void draw()
@@ -88,6 +92,13 @@ public class Audio1 extends PApplet
         average= sum / (float) ab.size();
 
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+
+        for(int i = 0; i < ab.size(); i++)
+        {
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], abs(ab.get(i)), 0.05f);
+        }
+        
+
         
         float cx = width / 2;
         float cy = height / 2;
