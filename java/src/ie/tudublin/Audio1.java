@@ -172,6 +172,18 @@ public class Audio1 extends PApplet
             } // end case 3
             case 4:
             {
+                background(0);
+                strokeWeight(1);
+                noFill();
+
+                float c = map(smoothedAmplitude, 0, 1f, 0, 255);
+
+                float radius = map(smoothedAmplitude, 0, 1f, 500, 1500);
+                
+                
+                stroke(c, 255, 255);
+                circle(cx, cy, radius);
+
 
                 break;
             }
