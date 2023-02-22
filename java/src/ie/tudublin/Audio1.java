@@ -19,6 +19,8 @@ public class Audio1 extends PApplet
     float smoothedY = 0;
     float smoothedAmplitude = 0;
 
+    float waveform;
+
     public void keyPressed()
     {
 		if (key >= '0' && key <= '9')
@@ -66,7 +68,7 @@ public class Audio1 extends PApplet
         smoothedY = y;
 
 
-        lerpedBuffer = new float[width];
+        lerpedBuffer = new float[width];        
 
     } // end void setup
 
@@ -133,6 +135,55 @@ public class Audio1 extends PApplet
                 break;
 
             } // end case 1
+
+            case 2:
+            {
+                background(0);
+
+                
+                
+                break;
+
+            } // end case 2
+
+            case 3:
+            {
+                background(0);
+
+                for (int i = 0; i < ab.size(); i++) {
+
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+    
+                    line(0, i, lerpedBuffer[i] * halfH * 4, i);
+                    line(width, i, width - (lerpedBuffer[i] * halfH * 4), i);
+                    line(i, 0, i, lerpedBuffer[i] * halfH * 4);
+                    line(i, height, i, height - (lerpedBuffer[i] * halfH * 4));
+                }                  
+
+                break;
+
+            } // end case 3
+            case 4:
+            {
+
+                break;
+            }
+
+            case 5:
+            {
+
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+                    
+                    float f = ab.get(i) * halfH;
+                    line(i, lerpedBuffer[i], i, halfH - f);                    
+                } // end for
+
+                break;
+            }
         } // end switch
         
 
