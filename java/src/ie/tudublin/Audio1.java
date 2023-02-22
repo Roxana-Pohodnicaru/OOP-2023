@@ -202,6 +202,27 @@ public class Audio1 extends PApplet
 
                 break;
             }
+
+            case 6:
+            {
+
+                background(0);
+                strokeWeight(1);
+                noFill();
+
+                float c = map(smoothedAmplitude, 0, 1f, 0, 255);
+
+                float size = map(smoothedAmplitude, 0, 1f, 100, 1000);
+                
+                rectMode(CENTER);
+                
+                stroke(c, 255, 255);
+                square(cx, cy, size);
+
+
+                break;
+
+            }
         } // end switch
         
 
