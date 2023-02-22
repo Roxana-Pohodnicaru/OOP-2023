@@ -19,25 +19,35 @@ public class Audio1 extends PApplet
     float smoothedY = 0;
     float smoothedAmplitude = 0;
 
-    public void keyPressed() {
-		if (key >= '0' && key <= '9') {
+    public void keyPressed()
+    {
+		if (key >= '0' && key <= '9')
+        {
 			mode = key - '0';
-		}
+
+		} // end if
+
+        // pauses music if space is pressed
 		if (keyCode == ' ') {
-            if (ap.isPlaying()) {
+            if (ap.isPlaying())
+            {
                 ap.pause();
-            } else {
+
+            } // end inner if
+            else
+            {
                 ap.rewind();
                 ap.play();
-            }
-        }
-	}
+
+            } // end inner else
+        } // end if
+	} // end void keyPressed
 
     public void settings()
     {
         size(1024, 1000, P3D);
         //fullScreen(P3D, SPAN);
-    }
+    } // end void settings
 
     public void setup()
     {
@@ -55,9 +65,11 @@ public class Audio1 extends PApplet
         y = height / 2;
         smoothedY = y;
 
-    }
+    } // end void setup
+
 
     float off = 0;
+
 
     public void draw()
     {
@@ -66,6 +78,7 @@ public class Audio1 extends PApplet
         float average = 0;
         float sum = 0;
         off += 1;
+
         // Calculate sum and average of the samples
         // Also lerp each element of buffer;
         for(int i = 0 ; i < ab.size() ; i ++)
@@ -79,8 +92,10 @@ public class Audio1 extends PApplet
         float cx = width / 2;
         float cy = height / 2;
 
-        switch (mode) {
+        switch (mode)
+        {
 			case 0:
+            {
                 background(0);
                 for(int i = 0 ; i < ab.size() ; i ++)
                 {
@@ -89,13 +104,18 @@ public class Audio1 extends PApplet
                     stroke(c, 255, 255);
                     float f = ab.get(i) * halfH;
                     line(i, halfH + f, i, halfH - f);                    
-                }
+                } // end for
                 break;
-        case 1:
-            background(0);            
-            break;
+            } // end case 0
+                
+            case 1:
+            {
+                background(0); 
+                        
+                break;
 
-        }
+            } // end case 1
+        } // end switch
         
 
 
@@ -113,5 +133,5 @@ public class Audio1 extends PApplet
         circle(200, smoothedY, 50);
         */
 
-    }        
-}
+    } // end void draw    
+} // end class Audio1
