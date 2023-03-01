@@ -28,17 +28,26 @@ public class Audio2 extends PApplet{
         {
             // Math.abs returns the positive value of number
             float f = Math.abs(frequency);
+            int freqSize = frequencies.length;
 
+
+            for(int i = 0; i < freqSize; i++)
+            {
+                if(f == frequencies[i] || f == (frequencies[i] + 20.0f) || f == (frequencies[i] - 20.0f))
+                {
+                    String letter = spellings[i];
+                    return letter;
+                }
+
+                i++;
+            }
             // go through loop of frequencies
                 // if f is in the 'range' of frequencies[i] 
                 // match the letter to spellings[i]
 
                 // 330 = E     frequencies[2] spellings[2]
                 // 420 = A     frequencies[5] spellings[5]
-
-
         }
-
     }
     
 
