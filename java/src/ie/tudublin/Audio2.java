@@ -24,7 +24,20 @@ public class Audio2 extends PApplet{
         float[] frequencies = {293.66f, 329.63f, 369.99f, 392.00f, 440.00f, 493.88f, 554.37f, 587.33f, 659.25f, 739.99f, 783.99f, 880.00f, 987.77f, 1108.73f, 1174.66f};
         String[] spellings = {"D,", "E,", "F,", "G,", "A,", "B,", "C", "D", "E", "F", "G", "A", "B","c", "d", "e", "f", "g", "a", "b", "c'", "d'", "e'", "f'", "g'", "a'", "b'", "c''", "d''"};
 
-        
+        public String spell(float frequency)
+        {
+            // Math.abs returns the positive value of number
+            float f = Math.abs(frequency);
+
+            // go through loop of frequencies
+                // if f is in the 'range' of frequencies[i] 
+                // match the letter to spellings[i]
+
+                // 330 = E     frequencies[2] spellings[2]
+                // 420 = A     frequencies[5] spellings[5]
+
+
+        }
 
     }
     
