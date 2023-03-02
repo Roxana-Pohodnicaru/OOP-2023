@@ -38,8 +38,6 @@ public class Audio2 extends PApplet{
                     String letter = spellings[i];
                     return letter;
                 }
-
-                i++;
             }
             // go through loop of frequencies
                 // if f is in the 'range' of frequencies[i] 
