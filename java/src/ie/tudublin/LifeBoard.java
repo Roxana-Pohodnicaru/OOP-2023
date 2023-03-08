@@ -135,6 +135,28 @@ public class LifeBoard {
 
     public void setSize(int size) {
         this.size = size;
-    } 
+    }
+
+    public void setCell(boolean[][] board, int row, int col, boolean b)
+    {
+        if (row >= 0 && row < size - 1 && col >= 0 && col < size - 1)
+        {
+            board[row][col] = b;
+        }
+    }
+
+
+    public void clear()
+    {
+        for (int row = 0; row < size; row++)
+        {
+            for (int col = 0; col < size; col++)
+            {
+                setCell(board, row, col, false);
+            }
+        }
+    }
+
+
     
 }

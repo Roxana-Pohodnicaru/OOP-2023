@@ -23,6 +23,14 @@ public class Life extends PApplet
 		background(0);
 		board.render();
 		board.applyRules();
-		
+	
+	}
+
+	public void keyPressed()
+	{
+		if (keyCode == '2')
+		{
+			clear();
+		}
 	}
 }
