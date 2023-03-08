@@ -33,4 +33,5 @@ public class Life extends PApplet
 			clear();
 		}
 	}
+	
 }

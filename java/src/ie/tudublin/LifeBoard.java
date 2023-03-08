@@ -2,7 +2,7 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
-public class LifeBoard {
+public class LifeBoard extends PApplet{
     boolean[][] board;
     boolean[][] next;
     
@@ -145,6 +145,14 @@ public class LifeBoard {
         }
     }
 
+    public void mouseDragged()
+    {
+        
+        int row = (int) map(mouseY, 0, height, 0, size);
+        int col = (int) map(mouseX, 0 , width, 0, size);
+
+        setCell(board, row, col, true);
+    }
 
     public void clear()
     {
@@ -155,8 +163,5 @@ public class LifeBoard {
                 setCell(board, row, col, false);
             }
         }
-    }
-
-
-    
+    }    
 }
