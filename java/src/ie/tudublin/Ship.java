@@ -2,6 +2,7 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 import processing.core.PVector;
+import java.util.ArrayList;
 
 public class Ship {
 
@@ -96,9 +97,31 @@ public class Ship {
 
 class ShipAI extends Ship {
 
+    private PVector pos;
+
     // constructor
     public ShipAI(float x, float y, float size, int c, PApplet p)
     {
         super(x, y, size, c, p);
-    }    
+
+        pos = new PVector(x, y);
+
+    }
+    
+    ArrayList<PVector> path = new ArrayList<PVector>();
+
+    public void moveAI()
+    {
+        int min = 10;
+        int max = 490;
+        int random_x = (int)Math.floor(Math.random() * (max - min + 1) + min);
+        int random_y = (int)Math.floor(Math.random() * (max - min + 1) + min);
+
+        for(int i = 0; i < 10; i++)
+        {
+            pos.x = random_x;
+            pos.y = random_y;
+        }
+
+    }
 }

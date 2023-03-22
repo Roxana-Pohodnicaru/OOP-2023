@@ -31,5 +31,7 @@ public class YASC extends PApplet
 		ship1.move();
 
 		shipAI.render();
+		shipAI.moveAI();
+
 	}
 }
