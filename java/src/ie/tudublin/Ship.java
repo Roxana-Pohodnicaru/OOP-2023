@@ -4,6 +4,7 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 public class Ship {
+
     private PVector pos;
     private PVector forward;
     private PApplet p;
@@ -92,6 +93,15 @@ public class Ship {
         p.line(halfSize, halfSize, 0, 0);
         p.line(0, 0, -halfSize, halfSize);
         p.popMatrix();
+    }
+}
+
+class ShipAI extends Ship {
+
+    // constructor
+    public ShipAI(float x, float y, float size, int c, PApplet p)
+    {
+        super(x, y, size, c, p);
     }
 
     
