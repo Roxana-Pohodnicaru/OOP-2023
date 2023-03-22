@@ -19,8 +19,6 @@ public class Ship {
         this.p = p;  
     }
 
-
-
     public PVector getPos() {
         return pos;
     }
@@ -102,8 +100,5 @@ class ShipAI extends Ship {
     public ShipAI(float x, float y, float size, int c, PApplet p)
     {
         super(x, y, size, c, p);
-    }
-
-    
-    
+    }    
 }
