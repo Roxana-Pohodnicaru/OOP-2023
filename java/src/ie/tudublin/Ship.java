@@ -78,6 +78,14 @@ public class Ship {
                 pos.y -= forward.y;
 
             }
+            if (p.key == ' ')
+            {
+                // spawn bullet at position of ship, and rotation of bullet same as ship
+                Bullet b = new Bullet(pos.x, pos.y, rot, c, p);
+
+                // casting to be type YASC
+                ((YASC) p).bullets.add(b);
+            }
         }
     }
 

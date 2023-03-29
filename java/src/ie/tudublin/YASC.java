@@ -1,5 +1,7 @@
 package ie.tudublin;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public class YASC extends PApplet
@@ -7,6 +9,11 @@ public class YASC extends PApplet
 	Ship ship;
 	Ship ship1;
 
+	// array list can expand, unlike arrays which are static
+	// < > - angle brackets - passing a type as a parameter
+	// can only store bullets or subclasses of bullets in list
+	// generic - specify which type to be stored
+	public ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	public void settings()
 	{
@@ -21,11 +28,26 @@ public class YASC extends PApplet
 	}
 
 	public void draw()
-	{	background(0);
+	{	
+		background(0);
+
 		ship.render();
 		ship.move();
 
 		ship1.render();
 		ship1.move();
+
+		// iterate backwards, otherwise you might skip an element
+		for(int i = bullets.size() -1; i <= 0 ; i--)
+		{
+			Bullet b = bullets.get(i);
+			b.render();
+			b.move();
+			
+		}
+
+
+		fill(255);
+		text("Bullets: " + bullets.size(), 50, 50);
 	}
 }
